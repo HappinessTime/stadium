@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="utf-8">
+    <title>跳转中</title>
+    <link rel="stylesheet" href="//storage.joyreserve.com/Public/Wechat/css/bootstrap.min.css">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <style type="text/css">
+
+        html {
+            font-size: calc(100vh/13.7);
+        }
+        .number{
+            text-align: center;
+            font-size: 0.6rem;
+            color:#666666;
+            position: relative;
+            top:2.77rem;
+        }
+        .loading{
+            width: 2.3rem;
+            height: 2.3rem;
+            margin: 0 auto;
+            margin-bottom: 0.76rem;
+            margin-top:1.2rem;
+            position: relative;
+            -webkit-animation: load 3s linear infinite;
+        }
+        .loading div{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+        }
+        .loading span{
+            display: inline-block;
+            width: 0.43rem;
+            height: 0.43rem;
+            border-radius: 50%;
+            background: #99CC66;
+            position: absolute;
+            left: 50%;
+            margin-top: -0.1rem;
+            margin-left: -0.1rem;
+            -webkit-animation: changeBgColor 3s ease infinite;
+        }
+        @-webkit-keyframes load{
+            0%{
+                -webkit-transform: rotate(0deg);
+            }
+            33.3%{
+                -webkit-transform: rotate(120deg);
+            }
+            66.6%{
+                -webkit-transform: rotate(240deg);
+            }
+            100%{
+                -webkit-transform: rotate(360deg);
+            }
+        }
+        @-webkit-keyframes changeBgColor{
+            0%,100%{
+                background: #99CC66;
+            }
+            33.3%{
+                background: #FFFF66;
+            }
+            66.6%{
+                background: #FF6666;
+            }
+        }
+        .loading div:nth-child(2){
+            -webkit-transform: rotate(120deg);
+        }
+        .loading div:nth-child(3){
+            -webkit-transform: rotate(240deg);
+        }
+        .loading div:nth-child(2) span{
+            -webkit-animation-delay: 1s;
+        }
+        .loading div:nth-child(3) span{
+            -webkit-animation-delay: 2s;
+        }
+
+        .text{
+            font-size: 0.56rem;
+            color:#666666;
+            text-align: center;
+            letter-spacing: 0.03rem;
+            padding-right: 80px;
+            padding-left: 80px;
+        }
+
+    </style>
+
+</head>
+<body>
+<div class="blank">
+
+</div>
+<div>
+
+    <a id="href" href="javascript:history.back(-1);">
+        <div class="number" id="wait">
+            3  </div>
+    </a>
+
+    <div class="loading">
+        <div><span></span></div>
+        <div><span></span></div>
+        <div><span></span></div>
+    </div>
+    <div class="text">
+        该时段签到成功</div>
+</div>
+</body>
+
+<script type="text/javascript">
+    (function(){
+        var wait = document.getElementById('wait'),href = 'success.html?place='+(new URLSearchParams(location.search)).get('place');
+        var interval = setInterval(function(){
+            var time = --wait.innerHTML;
+            if(time <= 0) {
+                location.href = href;
+                clearInterval(interval);
+            };
+        }, 1000);
+    })();
+</script>
+
+</html>
+<!DOCTYPE html>
