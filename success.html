@@ -103,7 +103,19 @@
         h = h<10?('0' + h):h;
         m = m<10?('0' + m):m;
 
-        var timeRangeText = year+'-'+mon+'-'+date+' '+startH+':00-'+endH+':00';
+        var timeRangeText = '0';
+        
+        if (startH == 15 || startH == 18) {
+            timeRangeText = year+'-'+mon+'-'+date+' '+startH+':00-'+endH+':30';
+        
+        } else if (startH == 16 || startH == 19) {
+            endH = startH + 2;
+            timeRangeText = year+'-'+mon+'-'+date+' '+startH+':30-'+endH+':00';  
+            
+        } else {
+            timeRangeText = year+'-'+mon+'-'+date+' '+startH+':00-'+endH+':00';     
+            
+        }
         $("#timeRange").text('预约时间：'+timeRangeText);
         var signTimeText = mon+'-'+date+' '+h+':'+m;
         $("#signTime").text('签到时间：'+signTimeText);
