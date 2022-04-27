@@ -96,7 +96,7 @@
         date = date<10?('0' + date):date;
         var h = myDate.getHours();//获取当前小时数(0-23)
         var m = myDate.getMinutes();//获取当前分钟数(0-59)
-        var startH = h ;
+        var startH = h - 1 ;
         var endH = startH + 1;
         startH = startH<10?('0' + startH):startH;
         endH = endH<10?('0' + endH):endH;
